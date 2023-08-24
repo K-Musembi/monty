@@ -10,12 +10,21 @@
 void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *node;
-	int num;
+	long int num;
+	char *end;
 
-	if (data == NULL || !isdigit(*data))
+	if (data == NULL)
 	{
 		dprintf(2, "L%d: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
 	}
+	num = strtol(data, &end, 10);
+	if (*end != '\0')
+	{
+		dprintf(2, "L%d: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
 	node = malloc(sizeof(stack_t));
 	if (node == NULL)
 	{
@@ -23,7 +32,6 @@ void push(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	num = atoi(data);
 	node->n = num;
 	node->prev = NULL;
 	if (*stack == NULL)
