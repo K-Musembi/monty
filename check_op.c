@@ -41,8 +41,11 @@ instruction_t check_op(char *buf, unsigned int line_number)
 		operation.opcode = "add";
 		operation.f = add;
 	}
-	else if (strcmp(buf, "nope") == 0)
-		operation.opcode = "nope";
+	else if (strcmp(buf, "nop") == 0)
+	{
+		operation.opcode = "nop";
+		operation.f = nop;
+	}
 	else
 	{
 		dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n", line_number, buf);
