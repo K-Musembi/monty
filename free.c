@@ -8,7 +8,7 @@
  */
 void free_list(stack_t **stack)
 {
-	stack_t *temp;
+	stack_t *temp = NULL;
 
 	while (*stack != NULL)
 	{
@@ -16,4 +16,5 @@ void free_list(stack_t **stack)
 		*stack = (*stack)->next;
 		free(temp);
 	}
+	free(*stack);
 }

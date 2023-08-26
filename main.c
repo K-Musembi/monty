@@ -37,13 +37,16 @@ int main(int ac, char **av)
 	{
 		line_number++;
 		token1 = strtok(buf, delim);
-		data = strtok(NULL, delim);
-		operation = check_op(token1, line_number);
-		operation.f(&stack, line_number);
-		if (buf != NULL)
-			buf = NULL;
-		n = 0;
+		if (token1)
+		{
+			data = strtok(NULL, delim);
+			operation = check_op(token1, line_number);
+			operation.f(&stack, line_number);
+			free(buf);
+			n = 0;
+		}
 	}
 	free_list(&stack);
+	free(buf);
 	return (EXIT_SUCCESS);
 }

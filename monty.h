@@ -46,6 +46,7 @@ extern char *data;
 #include <fcntl.h>
 #include <ctype.h>
 #include <stdarg.h>
+#include <errno.h>
 
 instruction_t check_op(char *buf, unsigned int line_number);
 void push(stack_t **stack, unsigned int line_number);
