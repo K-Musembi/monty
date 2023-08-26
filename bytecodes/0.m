@@ -1,5 +1,14 @@
-push 98
-push 402
+push 30
+push 20
+sub
 pint
-pop
+push 10
+div
+pint
+push 20
+mul
+pint
+push 15
+mod
+pint
 pall

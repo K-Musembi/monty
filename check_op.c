@@ -27,25 +27,21 @@ instruction_t check_op(char *buf, unsigned int line_number)
 		operation.f = pint;
 	}
 	else if (strcmp(buf, "pop") == 0)
-	{
-		operation.opcode = "pop";
-		operation.f = pop;
-	}
+		operation = basic_ops(buf);
 	else if (strcmp(buf, "swap") == 0)
-	{
-		operation.opcode = "swap";
-		operation.f = swap;
-	}
+		operation = basic_ops(buf);
 	else if (strcmp(buf, "add") == 0)
-	{
-		operation.opcode = "add";
-		operation.f = add;
-	}
+		operation = basic_ops(buf);
 	else if (strcmp(buf, "nop") == 0)
-	{
-		operation.opcode = "nop";
-		operation.f = nop;
-	}
+		operation = basic_ops(buf);
+	else if (strcmp(buf, "sub") == 0)
+		operation = basic_ops(buf);
+	else if (strcmp(buf, "div") == 0)
+		operation = math_ops(buf);
+	else if (strcmp(buf, "mul") == 0)
+		operation = math_ops(buf);
+	else if (strcmp(buf, "mod") == 0)
+		operation = math_ops(buf);
 	else
 	{
 		dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n", line_number, buf);
